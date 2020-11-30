@@ -1,7 +1,6 @@
 var next = $(".next i");
 var prev = $(".prev i");
 
-
 // funzione click di destra, quindi next
 next.click(function(){
   // assegno ad una variabile l'immagine attiva
@@ -33,7 +32,6 @@ next.click(function(){
   }
 });
 
-
 // funzione click di sinistra, quindi prev
 prev.click(function(){
   var immagineAttiva = $("img.active");
@@ -56,3 +54,25 @@ prev.click(function(){
     cerchioAttivo.addClass("active");
   }
 });
+
+// BONUS: funzione al click del pallino andare avanti e indietro.
+var pallino = $(".nav > i");
+var immagini = $("img").siblings().get(); //array delle immagini
+
+pallino.click(function(){
+  // trova indice elemento
+  var pallinoIndex = $(this).index();
+  // seleziono il pallino corrente.
+  var pallinoAttivo = $(this);
+
+  // tolgo la classe e la riaggiungo ai pallini.
+  pallino.removeClass("active");
+  pallinoAttivo.addClass("active")
+
+  // tolgo la classe active all'immagine attiva del corrispettivo puntino.
+  $("img.active").removeClass("active");
+  // aggiungo la classe acitve all'immagine attiva del corrispettivo puntino.
+  $(immagini[pallinoIndex]).addClass("active");
+});
+
+// funzione per andare avanti e indietro con le arrow.
